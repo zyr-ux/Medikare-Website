@@ -8,12 +8,22 @@ const firebaseConfig = {
     appId: "1:522506024953:web:b47dc761f6c13f7f5baf28",
     measurementId: "G-YMNE83R1DC"
   };
-  
+
   // Initialize Firebase
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
+  const auth = firebase.auth();
   const db = firebase.firestore();
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      console.log("User is signed in:", user.email);
+      // Enable PDF submission features here
+    } else {
+      alert("You must be logged in to use this page.");
+      window.location.href = "login.html"; // or your login page
+    }
+  });
   
   // Function to generate a custom prescription ID
   function generatePrescriptionID(patientName) {
@@ -280,7 +290,15 @@ const firebaseConfig = {
       }
   
       // --- Save the PDF ---
-      const filename = `Prescription_${formData.patientName.replace(/\s+/g, '_') || 'Patient'}_${formData.consultationDate || new Date().toISOString().slice(0,10)}.pdf`;
+      const formattedDate = formData.consultationDate 
+    ? formData.consultationDate.replace(/-/g, '') 
+    : new Date().toISOString().slice(0,10).replace(/-/g, '');
+
+const patientNameSanitized = formData.patientName 
+    ? formData.patientName.trim().replace(/\s+/g, '_') 
+    : 'Patient';
+
+const filename = `${patientNameSanitized}-prescription-${formattedDate}.pdf`;
       doc.save(filename);
   }
   
