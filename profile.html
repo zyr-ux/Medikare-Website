@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile-style.css" />
+</head>
+<body>
+  <!-- Profile Card -->
+  <div class="page-container">
+    <div class="profile-card" id="profile-card">
+      <div class="profile-icon"><i class="fas fa-user-circle"></i></div>
+      <h2>Your Profile</h2>
+      <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+      <p><strong>UID:</strong> <span id="user-uid">Loading...</span></p>
+      <p><strong>Account Created:</strong> <span id="user-created">Loading...</span></p>
+      <button class="logout-btn" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </div>
+  <script type="module" src="profile.js"></script>
+</body>
+</html>
