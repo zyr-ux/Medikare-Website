@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login_style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+  <script type="module" src="auth.js"></script>
+</head>
+
+<body class="page-enter">
+  <!-- Navbar with back button integrated -->
+  <nav class="navbar">
+    <a href="index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i>Back to Home</a>
+    <div class="logo">
+      <span class="logo-text">MEDIKARE</span>
+      <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#" id="contact-btn">Contact</a></li>
+        <li><a href="#" id="about-btn">About Us</a></li>
+        <li><a href="#" id="emergency-btn">Emergency Help</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Modal popups -->
+  <div class="modal" id="contact-modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2><i class="fas fa-phone-alt"></i> Contact Us</h2>
+      <p class="modal-info">0674 711 1000</p>
+      <p>Feel free to call us for any information or assistance.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="about-modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2><i class="fas fa-info-circle"></i> About Us</h2>
+      <p class="modal-info">Medikare is with you</p>
+      <p>We are committed to providing the best healthcare services to our patients.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="emergency-modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2><i class="fas fa-ambulance"></i> Emergency Help</h2>
+      <p class="modal-info">1800 309 8888 | 0674-7111333</p>
+      <p>Our ambulance services are available 24/7 to assist you in emergencies.</p>
+    </div>
+  </div>
+
+  <!-- Login/Register Form -->
+  <div class="container">
+    <h2 id="form-title">Login</h2>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <button id="auth-btn">Login</button>
+    <button id="toggle-btn">Don't have an account? Register</button>
+
+    <div class="divider">OR</div>
+    <button id="google-btn">Sign in with Google</button>
+  </div>
+
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Modal script -->
+  <script>
+    const contactBtn = document.getElementById("contact-btn");
+    const aboutBtn = document.getElementById("about-btn");
+    const emergencyBtn = document.getElementById("emergency-btn");
+
+    const contactModal = document.getElementById("contact-modal");
+    const aboutModal = document.getElementById("about-modal");
+    const emergencyModal = document.getElementById("emergency-modal");
+
+    const closeBtns = document.querySelectorAll(".close-btn");
+
+    contactBtn.addEventListener("click", () => {
+      contactModal.style.display = "block";
+    });
+
+    aboutBtn.addEventListener("click", () => {
+      aboutModal.style.display = "block";
+    });
+
+    emergencyBtn.addEventListener("click", () => {
+      emergencyModal.style.display = "block";
+    });
+
+    closeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.parentElement.parentElement.style.display = "none";
+      });
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal")) {
+        e.target.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

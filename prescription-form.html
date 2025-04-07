@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Prescription PDF</title>
+    <link rel="stylesheet" href="prescription-style.css">
+</head>
+<body>
+    <!-- Back to home button -->
+    <a href="index.html" class="back-button" id="back-button">
+        <i class="fas fa-arrow-left"></i>Back to Home</a>
+
+    <h1>Prescription Details Form</h1>
+    <form id="prescriptionForm">
+        <fieldset>
+            <legend>Doctor & Hospital Info</legend>
+            <div class="form-group">
+                <label for="doctorName">Doctor Name:</label>
+                <div class="input-prefix-group">
+                    <span>Dr.</span>
+                    <input type="text" id="doctorName" placeholder="Doctor's Name Here" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="doctorCredentials">Credentials:</label>
+                <input type="text" id="doctorCredentials" value="MBBS, MD (Medicine)" required>
+            </div>
+            <div class="form-group">
+                <label for="doctorPhone">Phone:</label>
+                <input type="text" id="doctorPhone" placeholder="Enter doctor's phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hospitalSelect">Hospital:</label>
+                <select id="hospitalSelect" required>
+                    <option value="" disabled selected>-- Select Hospital --</option>
+                    <option value="apollo_logo.txt">Apollo Hospitals, Bhubaneswar</option>
+                    <option value="kims_logo.txt">KIMS, Bhubaneswar</option>
+                    <option value="care_logo.txt">Care Hospital, Bhubaneswar</option>
+                    <option value="sum_logo.txt">Sum Hospital, Bhubaneswar</option>
+                    <option value="no_logo.txt">Other (No Logo)</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Consultation Details</legend>
+            <div class="form-group">
+                <label for="consultationDate">Date:</label>
+                <input type="date" id="consultationDate" required>
+            </div>
+            <div class="form-group">
+                <label for="consultationType">Consultation Type:</label>
+                <input type="text" id="consultationType" placeholder="e.g., Follow-up, New" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Patient Information</legend>
+            <div class="form-group">
+                <label for="patientName">Name:</label>
+                <input type="text" id="patientName" placeholder="Enter patient's name" required>
+            </div>
+            <div class="form-group">
+                <label for="patientSex">Sex:</label>
+                <select id="patientSex" required>
+                    <option value="">--Select--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="patientAge">Age:</label>
+                <input type="number" id="patientAge" placeholder="Enter patient's age" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Vitals</legend>
+            <div class="form-group">
+                <label for="patientWeight">Weight (kg):</label>
+                <input type="number" step="0.1" id="patientWeight" placeholder="e.g., 70.5">
+            </div>
+            <div class="form-group">
+                <label for="patientHeight">Height (cm):</label>
+                <input type="number" step="0.1" id="patientHeight" placeholder="e.g., 175">
+            </div>
+            <div class="form-group">
+                <label for="patientBMI">BMI:</label>
+                <div class="bmi-input-group">
+                    <input type="number" step="0.1" id="patientBMI" placeholder="e.g., 22.9" readonly>
+                    <button type="button" id="calculateBMI">Calculate</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patientBP">Blood Pressure:</label>
+                <input type="text" id="patientBP" placeholder="e.g., 120/80 mmHg">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Diagnosis</legend>
+            <div class="form-group">
+                <label for="diagnosis">Diagnosis / Provisional Diagnosis:</label>
+                <textarea id="diagnosis" placeholder="Enter diagnosis details"></textarea>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Medication Prescribed</legend>
+            <div class="table-wrapper">
+                <table id="medications-table">
+                    <thead>
+                        <tr>
+                            <th>Medicine</th>
+                            <th>Dosage</th>
+                            <th>Time</th>
+                            <th>Duration</th>
+                            <th>Delete Row</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medications-body">
+                    </tbody>
+                </table>
+            </div>
+            
+            <button type="button" id="add-medication-btn">Add Medication Row</button>
+        </fieldset>
+
+        <br>
+        <button type="submit">Generate and Download PDF</button>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medikare - Healthcare at Your Fingertips</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-text">MEDIKARE</span>
+            <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="#" id="contact-btn">Contact</a></li>
+                <li><a href="#" id="about-btn">About Us</a></li>
+                <li><a href="#" id="emergency-btn">Emergency Help</a></li>
+                <li><a href="login.html" id="login-btn">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Modal popups -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2><i class="fas fa-phone-alt"></i> Contact Us</h2>
+            <p class="modal-info">0674 711 1000</p>
+            <p>Feel free to call us for any information or assistance.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="about-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2><i class="fas fa-info-circle"></i> About Us</h2>
+            <p class="modal-info">Medikare is with you</p>
+            <p>We are committed to providing the best healthcare services to our patients.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="emergency-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2><i class="fas fa-ambulance"></i> Emergency Help</h2>
+            <p class="modal-info">1800 309 8888 | 0674-7111333</p>
+            <p>Our ambulance services are available 24/7 to assist you in emergencies.</p>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-container">
+        <!-- Quote container with auto-rotation -->
+        <div class="quote-container">
+            <div class="quote-box">
+                <p class="quote">"Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship."</p>
+                <span class="author">- Buddha</span>
+            </div>
+            <div class="quote-box">
+                <p class="quote">"The groundwork for all happiness is good health."</p>
+                <span class="author">- Leigh Hunt</span>
+            </div>
+            <div class="quote-box">
+                <p class="quote">"A healthy outside starts from the inside."</p>
+                <span class="author">- Robert Urich</span>
+            </div>
+            <div class="quote-box">
+                <p class="quote">"The greatest wealth is health."</p>
+                <span class="author">- Virgil</span>
+            </div>
+            <div class="quote-box">
+                <p class="quote">"Health is not valued until sickness comes."</p>
+                <span class="author">- Thomas Fuller</span>
+            </div>
+        </div>
+
+        <!-- 3D animated welcome text -->
+        <div class="welcome-text-container">
+            <div class="welcome-text">
+                <span>W</span>
+                <span>E</span>
+                <span>L</span>
+                <span>C</span>
+                <span>O</span>
+                <span>M</span>
+                <span>E</span>
+                <span>&nbsp;</span>
+                <span>T</span>
+                <span>O</span>
+                <span>&nbsp;</span>
+                <span>M</span>
+                <span>E</span>
+                <span>D</span>
+                <span>I</span>
+                <span>K</span>
+                <span>A</span>
+                <span>R</span>
+                <span>E</span>
+            </div>
+        </div>
+
+        <!-- Action button -->
+        <div class="action-btn-container">
+            <a href="prescription-form.html" class="btn action-btn" id="go-to-prescription">
+                <i class="fas fa-user-plus"></i> Register Patient Information
+            </a>
+        </div>
+    </div>
+
+    <!-- 3D floating elements -->
+    <div class="floating-elements">
+        <div class="float-element" style="--i:1;"><i class="fas fa-pills"></i></div>
+        <div class="float-element" style="--i:2;"><i class="fas fa-syringe"></i></div>
+        <div class="float-element" style="--i:3;"><i class="fas fa-stethoscope"></i></div>
+        <div class="float-element" style="--i:4;"><i class="fas fa-capsules"></i></div>
+        <div class="float-element" style="--i:5;"><i class="fas fa-first-aid"></i></div>
+        <div class="float-element" style="--i:6;"><i class="fas fa-heartbeat"></i></div>
+        <div class="float-element" style="--i:7;"><i class="fas fa-briefcase-medical"></i></div>
+        <div class="float-element" style="--i:8;"><i class="fas fa-user-md"></i></div>
+    </div>
+    <script>
+        document.getElementById("go-to-prescription").addEventListener("click", function () {
+            document.body.style.transition = "opacity 1.6s ease-in-out";
+            document.body.style.opacity = "0";
+            document.body.style.pointerEvents = "none"; // prevent clicks during transition
+        
+            setTimeout(function () {
+                window.location.href = "prescription_form.html";
+            }, 800); // match the fade duration
+        });
+        </script>
+    <script src="prescription-script.js"></script>
+</body>
+</html>
