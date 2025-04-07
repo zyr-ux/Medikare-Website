@@ -1,6 +1,13 @@
 // Import functions from Firebase v9 modular SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 import {
+  getFirestore,
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -21,6 +28,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
@@ -44,6 +52,15 @@ function hideLoader() {
   loader.style.display = "none";
 }
 
+async function saveUserToFirestore(user) {
+  const userRef = doc(db, "users", user.uid);
+  await setDoc(userRef, {
+    email: user.email,
+    createdAt: serverTimestamp(),
+    uid: user.uid
+  }, { merge: true }); // merge is safe but not strictly necessary for first time
+}
+
 // Login/Register Button
 authBtn.addEventListener("click", async () => {
   const email = emailInput.value;
@@ -59,7 +76,8 @@ authBtn.addEventListener("click", async () => {
     if (isLogin) {
       await signInWithEmailAndPassword(auth, email, password);
     } else {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await saveUserToFirestore(userCredential.user);
     }
     window.location.href = "index.html";
   } catch (error) {
@@ -73,14 +91,21 @@ authBtn.addEventListener("click", async () => {
 googleBtn.addEventListener("click", async () => {
   showLoader();
   try {
-    await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // Save only if new user
+    if (result._tokenResponse?.isNewUser) {
+      await saveUserToFirestore(user);
+    }
+
     window.location.href = "index.html";
   } catch (error) {
     alert(error.message);
   } finally {
     hideLoader();
   }
-});
+}); 
 
 // Toggle Login/Register
 toggleBtn.addEventListener("click", () => {
