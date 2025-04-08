@@ -79,7 +79,7 @@ authBtn.addEventListener("click", async () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await saveUserToFirestore(userCredential.user);
     }
-    window.location.href = "index.html";
+    window.location.href = "../html/index.html";
   } catch (error) {
     alert(error.message);
   } finally {
@@ -99,7 +99,7 @@ googleBtn.addEventListener("click", async () => {
       await saveUserToFirestore(user);
     }
 
-    window.location.href = "index.html";
+    window.location.href = "../html/index.html";
   } catch (error) {
     alert(error.message);
   } finally {

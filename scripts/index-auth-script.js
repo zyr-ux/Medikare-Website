@@ -32,15 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       if (user) {
         loginBtn.innerHTML = `<i class="fas fa-user-circle"></i> Show Profile`;
-        loginBtn.href = "profile.html";
+        loginBtn.href = "../html/profile.html";
       } else {
         loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Login`;
-        loginBtn.href = "login.html";
+        loginBtn.href = "../html/login.html";
       }
 
       // Fade back in
       loginBtn.style.opacity = "1";
       loginBtn.style.pointerEvents = "auto";
-    }, 300);
+    }, 150);
   });
 });

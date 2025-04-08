@@ -25,7 +25,7 @@ onAuthStateChanged(auth, (user) => {
         : "N/A";
     } else if (!manualSignOut) {
       alert("You are not logged in.");
-      window.location.href = "login.html";
+      window.location.href = "../html/login.html";
     }
   });
 // Logout

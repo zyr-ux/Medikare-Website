@@ -21,7 +21,7 @@ const firebaseConfig = {
       // Enable PDF submission features here
     } else {
       alert("You must be logged in to use this page.");
-      window.location.href = "login.html"; // or your login page
+      window.location.href = "../html/login.html"; // or your login page
     }
   });
   

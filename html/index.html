@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medikare - Healthcare at Your Fingertips</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
                 <li><a href="#" id="contact-btn">Contact</a></li>
                 <li><a href="#" id="about-btn">About Us</a></li>
                 <li><a href="#" id="emergency-btn">Emergency Help</a></li>
-                <li><a href="login.html" id="login-btn">Login</a></li>
+                <li><a href="../html/login.html" id="login-btn">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -105,7 +105,7 @@
 
         <!-- Action button -->
         <div class="action-btn-container">
-            <a href="prescription-form.html" class="btn action-btn" id="go-to-prescription">
+            <a href="../html/prescription-form.html" class="btn action-btn" id="go-to-prescription">
                 <i class="fas fa-user-plus"></i> Register Patient Information
             </a>
         </div>
@@ -129,11 +129,11 @@
             document.body.style.pointerEvents = "none"; // prevent clicks during transition
         
             setTimeout(function () {
-                window.location.href = "prescription_form.html";
+                window.location.href = "../html/prescription_form.html";
             }, 800); // match the fade duration
         });
         </script>
-    <script src="index-ui-script.js"></script>
-    <script type="module" src="index-auth-script.js"></script>
+    <script src="../scripts/index-ui-script.js"></script>
+    <script type="module" src="../scripts/index-auth-script.js"></script>
 </body>
 </html>

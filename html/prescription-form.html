@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Prescription PDF</title>
-    <link rel="stylesheet" href="prescription-style.css">
+    <link rel="stylesheet" href="../styles/prescription-style.css">
 </head>
 <body>
     <!-- Back to home button -->
-    <a href="index.html" class="back-button" id="back-button">
+    <a href="../html/index.html" class="back-button" id="back-button">
         <i class="fas fa-arrow-left"></i>Back to Home</a>
 
     <h1>Prescription Details Form</h1>
@@ -35,10 +35,10 @@
                 <label for="hospitalSelect">Hospital:</label>
                 <select id="hospitalSelect" required>
                     <option value="" disabled selected>-- Select Hospital --</option>
-                    <option value="./apollo_logo.txt">Apollo Hospitals, Bhubaneswar</option>
-                    <option value="./kims_logo.txt">KIMS, Bhubaneswar</option>
-                    <option value="./care_logo.txt">Care Hospital, Bhubaneswar</option>
-                    <option value="./sum_logo.txt">Sum Hospital, Bhubaneswar</option>
+                    <option value="../assests/apollo_logo.txt">Apollo Hospitals, Bhubaneswar</option>
+                    <option value="../assests/kims_logo.txt">KIMS, Bhubaneswar</option>
+                    <option value="../assests/care_logo.txt">Care Hospital, Bhubaneswar</option>
+                    <option value="../assests/sum_logo.txt">Sum Hospital, Bhubaneswar</option>
                     <option value="no_logo.txt">Other (No Logo)</option>
                 </select>
             </div>
@@ -138,6 +138,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-    <script src="prescription-script.js"></script>
+    <script src="../scripts/prescription-script.js"></script>
 </body>
 </html>
