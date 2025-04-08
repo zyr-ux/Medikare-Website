@@ -33,7 +33,7 @@ document.getElementById("logout-btn").addEventListener("click", () => {
     manualSignOut = true;
     signOut(auth).then(() => {
       alert("You have been logged out.");
-      window.location.replace("index.html");
+      window.location.replace("../index.html");
     }).catch((error) => {
       console.error("Logout error:", error);
     });
